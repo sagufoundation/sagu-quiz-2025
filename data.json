@@ -1,0 +1,247 @@
+[
+  {
+    "question": "1. What is the plural form of \"book\"?",
+    "options": ["A) books", "B) bookes"],
+    "answer": "A) books"
+  },
+  {
+    "question": "2. Choose the correct article: \"I have ___ apple.\"",
+    "options": ["A) an", "B) a"],
+    "answer": "A) an"
+  },
+  {
+    "question": "3. Select the correct verb: \"She ___ very happy today.\"",
+    "options": ["A) is", "B) are"],
+    "answer": "A) is"
+  },
+  {
+    "question": "4. Which word means \"big\"?",
+    "options": ["A) large", "B) small"],
+    "answer": "A) large"
+  },
+  {
+    "question": "5. Choose the correct preposition: \"The cat is ___ the table.\"",
+    "options": ["A) on", "B) at"],
+    "answer": "A) on"
+  },
+  {
+    "question": "6. Complete the sentence: \"He ___ to school every day.\"",
+    "options": ["A) go", "B) goes"],
+    "answer": "B) goes"
+  },
+  {
+    "question": "8. Choose the correct form: \"They ___ my friends.\"",
+    "options": ["A) are", "B) is"],
+    "answer": "A) are"
+  },
+  {
+    "question": "9. Which word means \"happy\"?",
+    "options": ["A) glad", "B) sad"],
+    "answer": "A) glad"
+  },
+  {
+    "question": "10. Choose the correct sentence:",
+    "options": ["A) She likes to read.", "B) She like to read."],
+    "answer": "A) She likes to read."
+  },
+  {
+    "question": "11. Which is an animal?",
+    "options": ["A) desk", "B) dog"],
+    "answer": "B) dog"
+  },
+  {
+    "question": "12. Complete the sentence: \"I ___ coffee in the morning.\"",
+    "options": ["A) drinks", "B) drink"],
+    "answer": "B) drink"
+  },
+  {
+    "question": "13. Choose the correct preposition: \"The keys are ___ the bag.\"",
+    "options": ["A) in", "B) on"],
+    "answer": "A) in"
+  },
+  {
+    "question": "14. Which word means \"cold\"?",
+    "options": ["A) hot", "B) freezing"],
+    "answer": "B) freezing"
+  },
+  {
+    "question": "15. Choose the correct verb: \"He ___ a new car.\"",
+    "options": ["A) has", "B) have"],
+    "answer": "A) has"
+  },
+  {
+    "question": "16. Which word means \"to fix something\"?",
+    "options": ["A) break", "B) repair"],
+    "answer": "B) repair"
+  },
+  {
+    "question": "17. Complete the sentence: \"She ___ dinner when I called.\"",
+    "options": ["A) cooks", "B) was cooking"],
+    "answer": "B) was cooking"
+  },
+  {
+    "question": "18. Choose the correct preposition: \"They arrived ___ the airport.\"",
+    "options": ["A) at ", "B) to"],
+    "answer": "A) at "
+  },
+  {
+    "question": "19. Which word means \"to make something better\"?",
+    "options": ["A) destroy", "B) improve"],
+    "answer": "B) improve"
+  },
+  {
+    "question": "20. Complete the sentence: \"If you study, you ___ pass the test.\"",
+    "options": ["A) will", "B) would"],
+    "answer": "A) will"
+  },
+  {
+    "question": "21. Choose the correct sentence:",
+    "options": ["A) I have never been to Paris.", "B)  I has never been to Paris."],
+    "answer": "A) I have never been to Paris."
+  },
+  {
+    "question": "22. Which is a synonym for \"fast\"?",
+    "options": ["A) slow", "B) quick"],
+    "answer": "B) quick"
+  },
+  {
+    "question": "23. Complete the sentence: \"He ___ finished his homework yet.\"",
+    "options": ["A) hasn’t", "B) haven’t"],
+    "answer": "A) hasn’t"
+  },
+  {
+    "question": "24. Choose the correct preposition: \"The book is ___ the table.\"",
+    "options": ["A) on", "B) in"],
+    "answer": "A) on"
+  },
+  {
+    "question": "25. Which word means \"to build something\"?",
+    "options": ["A) destroy", "B) construct"],
+    "answer": "B) construct"
+  },
+  {
+    "question": "26. Complete the sentence: \"They ___ working on the project now.\"",
+    "options": ["A) is", "B) are"],
+    "answer": "B) are"
+  },
+  {
+    "question": "27. Which word means \"to help someone\"?",
+    "options": ["A) assist", "B) ignore"],
+    "answer": "A) assist"
+  },
+  {
+    "question": "28. Choose the correct sentence:",
+    "options": ["A) He don’t like pizza.", "B) He doesn’t like pizza."],
+    "answer": "B) He doesn’t like pizza."
+  },
+  {
+    "question": "29. Complete the sentence: \"I ___ to the park yesterday.\"",
+    "options": ["A) went", "B) go"],
+    "answer": "A) went"
+  },
+  {
+    "question": "30. Which word means \"a place to learn\"?",
+    "options": ["A) school", "B) store"],
+    "answer": "A) school"
+  },
+  {
+    "question": "31. Complete the sentence: \"She ___ been to Japan before.\"",
+    "options": ["A) has", "B) have"],
+    "answer": "A) has"
+  },
+  {
+    "question": "32. Choose the correct preposition: \"The meeting starts ___ 10 a.m.\"",
+    "options": ["A) in", "B) at"],
+    "answer": "B) at"
+  },
+  {
+    "question": "33. Which is an antonym for \"old\"?",
+    "options": ["A) ancient", "B) new"],
+    "answer": "B) new"
+  },
+  {
+    "question": "34. Complete the sentence: \"We ___ watching a movie last night.\"",
+    "options": ["A) has", "B) were"],
+    "answer": "B) were"
+  },
+  {
+    "question": "35. Which word means \"smart\"?",
+    "options": ["A) Intelligent", "B) Foolish"],
+    "answer": "A) Intelligent"
+  },
+  {
+    "question": "36. Choose the correct sentence:",
+    "options": ["A) She had already left when I arrived.", "B) She already had left when I arrived."],
+    "answer": "A) She had already left when I arrived."
+  },
+  {
+    "question": "37. Complete the sentence: \"If I ___ more time, I would travel the world.\"",
+    "options": ["A) have", "B) had"],
+    "answer": "B) had"
+  },
+  {
+    "question": "38. Which word means \"to delay something\"?",
+    "options": ["A) postpone", "B) advance"],
+    "answer": "A) postpone"
+  },
+  {
+    "question": "39. Choose the correct preposition: \"He is interested ___ learning new languages.\"",
+    "options": ["A) in", "B) at"],
+    "answer": "A) in"
+  },
+  {
+    "question": "40. Complete the sentence: \"By the time you arrive, we ___ eaten.\"",
+    "options": ["A) will have", "B) have"],
+    "answer": "A) will have"
+  },
+  {
+    "question": "41. Which word means \"hard to understand\"?",
+    "options": ["A) complicated", "B) simple"],
+    "answer": "A) complicated"
+  },
+  {
+    "question": "42. Complete the sentence: \"She acts as if she ___ everything.\"",
+    "options": ["A) knew", "B) knows"],
+    "answer": "B) knows"
+  },
+  {
+    "question": "43. Which word means \"to support someone\"?",
+    "options": ["A) He’s been work here for five years.", "B) He’s been working here for five years."],
+    "answer": "B) He’s been working here for five years."
+  },
+  {
+    "question": "44. Complete the sentence: \"They ___ their house painted last week.\"",
+    "options": ["A) have", "B) had"],
+    "answer": "B) had"
+  },
+  {
+    "question": "45. Which word means \"very tired\"?",
+    "options": ["A) Energized", "B) Exhausted"],
+    "answer": "B) Exhausted"
+  },
+  {
+    "question": "46. Choose the correct preposition: \"The report is divided ___ three sections.\"",
+    "options": ["A) into", "B) on"],
+    "answer": "A) into"
+  },
+  {
+    "question": "47. Complete the sentence: \"He said he ___ finish the project by tomorrow.\"",
+    "options": ["A) would", "B) will"],
+    "answer": "A) would"
+  },
+  {
+    "question": "48. Choose the correct sentence:",
+    "options": ["A)  If he had studied, he would have passed.", "B) If he studied, he would pass."],
+    "answer": "A)  If he had studied, he would have passed."
+  },
+  {
+    "question": "49. Which word means \"to think deeply about something\"?",
+    "options": ["A) Reflect", "B) Ignore"],
+    "answer": "A) Reflect"
+  },
+  {
+    "question": "50. Which word means \"queue\"?",
+    "options": ["A) disorder", "B) line"],
+    "answer": "B) line"
+  }
+]
