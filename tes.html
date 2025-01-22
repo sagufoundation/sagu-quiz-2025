@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Quiz App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            height: 100vh;
+            background-color: rgb(119, 117, 115);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+
+        label.box {
+            display: flex;
+            margin-top: 10px;
+            padding: 10px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            align-items: center;
+        }
+
+        label.box:hover {
+            background: #f0e8fd;
+        }
+
+        label.box.active {
+            background: #b085c8;
+            border-color: #8e498e;
+            color: white;
+        }
+
+        .circle {
+            height: 22px;
+            width: 22px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid #ddd;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .btn.btn-primary {
+            margin-top: 20px;
+            border-radius: 25px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mx-auto">
+        <!-- Intro Section -->
+        <div id="intro">
+            <div class="text-center mb-4">
+                <h3 class="fw-bold">SOL Vocabulary & Grammar Quiz</h3>
+                <p>Test your knowledge in a fun and interactive way!</p>
+            </div>
+            <form id="userDetails" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone <span class="text-danger">*</span></label>
+                    <input type="tel" id="phone" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address <span class="text-danger">*</span></label>
+                    <textarea id="address" class="form-control" rows="3" required></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary" id="startQuiz">Start Quiz</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Quiz Section -->
+        <div id="quizSection" class="d-none">
+            <div id="questions" class="mb-4"></div>
+            <div class="d-flex justify-content-between">
+                <div id="navigation" class="col-auto"></div>
+                <div id="score" class="col-auto"></div>
+            </div>
+        </div>
+
+        <!-- Score Section -->
+        <div id="resultSection" class="d-none">
+            <h4 class="text-center fw-bold">Quiz Completed</h4>
+            <p class="text-center" id="finalScore"></p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userDetailsForm = document.getElementById('userDetails');
+            const startQuizButton = document.getElementById('startQuiz');
+            const introSection = document.getElementById('intro');
+            const quizSection = document.getElementById('quizSection');
+            const resultSection = document.getElementById('resultSection');
+            const questionsContainer = document.getElementById('questions');
+            const navigationContainer = document.getElementById('navigation');
+            const finalScore = document.getElementById('finalScore');
+
+            let questions = [];
+            let currentQuestionIndex = 0;
+            let score = 0;
+
+            async function fetchQuestions() {
+                // Replace with your own questions JSON source
+                return [
+                    {
+                        question: "What is the capital of France?",
+                        options: ["Paris", "London", "Berlin", "Madrid"],
+                        answer: ["Paris"]
+                    },
+                    {
+                        question: "Which of these are fruits?",
+                        options: ["Apple", "Carrot", "Banana", "Potato"],
+                        answer: ["Apple", "Banana"]
+                    }
+                ];
+            }
+
+            function renderQuestion() {
+                const question = questions[currentQuestionIndex];
+                questionsContainer.innerHTML = `
+                    <h5>${currentQuestionIndex + 1}. ${question.question}</h5>
+                    <div class="row">
+                        ${question.options
+                            .map(
+                                (option, index) => `
+                                <div class="col-12">
+                                    <input type="checkbox" id="option${index}" class="d-none" value="${option}">
+                                    <label for="option${index}" class="box">
+                                        <div class="circle"></div>
+                                        <span>${option}</span>
+                                    </label>
+                                </div>`
+                            )
+                            .join("")}
+                    </div>
+                `;
+                navigationContainer.innerHTML = `
+                    ${currentQuestionIndex > 0
+                        ? '<button class="btn btn-secondary" id="prev">Previous</button>'
+                        : ""
+                    }
+                    ${currentQuestionIndex < questions.length - 1
+                        ? '<button class="btn btn-primary" id="next">Next</button>'
+                        : '<button class="btn btn-success" id="finish">Finish</button>'
+                    }
+                `;
+
+                document.querySelectorAll('input[type="checkbox"]').forEach(input => {
+                    input.addEventListener('change', (e) => {
+                        const label = e.target.nextElementSibling;
+                        label.classList.toggle('active', e.target.checked);
+                    });
+                });
+
+                document.getElementById('prev')?.addEventListener('click', () => {
+                    currentQuestionIndex--;
+                    renderQuestion();
+                });
+
+                document.getElementById('next')?.addEventListener('click', () => {
+                    currentQuestionIndex++;
+                    renderQuestion();
+                });
+
+                document.getElementById('finish')?.addEventListener('click', () => {
+                    checkAnswer();
+                    introSection.classList.add('d-none');
+                    quizSection.classList.add('d-none');
+                    resultSection.classList.remove('d-none');
+                    finalScore.innerHTML = `Your score: ${score} / ${questions.length}`;
+                });
+            }
+
+            function checkAnswer() {
+                const question = questions[currentQuestionIndex];
+                const selectedOptions = Array.from(
+                    document.querySelectorAll('input[type="checkbox"]:checked')
+                ).map(input => input.value);
+
+                if (
+                    JSON.stringify(selectedOptions.sort()) ===
+                    JSON.stringify(question.answer.sort())
+                ) {
+                    score++;
+                }
+            }
+
+            userDetailsForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                introSection.classList.add('d-none');
+                quizSection.classList.remove('d-none');
+                fetchQuestions().then((data) => {
+                    questions = data;
+                    renderQuestion();
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
