@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAGU Quiz</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="apple-touch-icon" href="https://library.sagufoundation.org/images/settings/favicon.png">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
@@ -167,7 +168,7 @@
                 <div class="col-md-12 col-lg-10">
                     <div class="mb-3">
                         <label for="address" class="form-label">Address <span class="text-danger"> </span> </label>
-                        <textarea class="form-control" id="address" rows="3" required></textarea>
+                        <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
                     </div>
                 </div>
 
@@ -205,6 +206,9 @@
             <div class="row mt-2" id="scoreSection">
 
             </div>
+        </div>
+        <div class="row" id="progresbar">
+            
         </div>
 
         <div class="biodata d-none" style="margin-top: 20rem; margin-bottom: 5rem;" id="survey">
@@ -335,7 +339,7 @@
                     <div class="mb-3">
                         <label for="5" class="form-label">5.What did you like about the quiz? <span class="text-danger">
                                 * </span> </label>
-                        <textarea class="form-control" id="5" rows="3" required></textarea>
+                        <textarea class="form-control" name="survey5" id="5" rows="3" required></textarea>
                     </div>
                 </div>
 
@@ -343,7 +347,7 @@
                     <div class="mb-3">
                         <label for="5" class="form-label">6. How can we make the quiz better for you? <span
                                 class="text-danger"> *</span> </label>
-                        <textarea class="form-control" id="5" rows="3" required></textarea>
+                        <textarea class="form-control" id="5" name="survey6" rows="3" required></textarea>
                     </div>
                 </div>
 
@@ -413,59 +417,81 @@
     <script>
         $(document).ready(function () {
             let data;
-            let currentQuestion = 0;
-            let score = 0;
+let currentQuestion = 0;
+let score = 0;
+let jawabanTerisi = 0; // Tambahkan variabel jawabanTerisi
 
-            function loadQuestion() {
-                const question = data[currentQuestion];
-                $('#questionSection').html(`
-            <div class="col-12">
-                <p class="fw-bold mt-5">${question.question}</p>
+function updateProgress() {
+    let percentage = (jawabanTerisi / data.length) * 100; // Sesuaikan total soal
+    document.getElementById("progressBar").style.width = percentage + "%";
+    document.getElementById("progressBar").setAttribute("aria-valuenow", percentage);
+    document.getElementById("progressBar").innerText = Math.round(percentage) + "%"; // Menampilkan angka persentase
+}
+
+function loadQuestion() {
+    const question = data[currentQuestion];
+    $('#questionSection').html(`
+        <div class="col-12">
+            <p class="fw-bold mt-5">${question.question}</p>
+        </div>
+    `);
+
+    $('#questionSection').append('<div class="row"></div>');
+    question.options.forEach((option, index) => {
+        $('#questionSection .row').append(`
+            <div class="col-md-6">
+                <input type="radio" name="box" class="pilihan" id="option${index}" value="${option}">
+                <label for="option${index}" class="box w-100">
+                    <div class="course">
+                        <span class=""></span>
+                        <span class="subject">${option}</span>
+                    </div>
+                </label>
             </div>
         `);
+    });
 
-                // Render the options
-                $('#questionSection').append('<div class="row"></div>');
-                question.options.forEach((option, index) => {
-                    $('#questionSection .row').append(`
-                <div class="col-md-6">
-                    <input type="radio" name="box" class="pilihan" id="option${index}" value="${option}">
-                    <label for="option${index}" class="box w-100">
-                        <div class="course">
-                            <span class=""></span>
-                            <span class="subject">${option}</span>
-                        </div>
-                    </label>
-                </div>
-            `);
-                });
+    $('#scoreSection').html(`
+        <div class="col-10 m-4">
+            <div class="p-4 bg-dark text-white rounded">
+                Skor: <span>${score}</span>/50
+            </div>
+        </div>
+    `);
 
-                $('#scoreSection').html(`
-            <div class="col-10 m-4">
-                <div class=" p-4 bg-dark text-white rounded">
-                    Skor: <span>${score}</span>/50
+    $('#progresbar').html(`
+        <div class="col-10 m-4 mx-auto text-center">
+            <div class="progress">
+                <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    0%
                 </div>
             </div>
-        `);
+        </div>
+    `);
 
-                const buttonHtml = currentQuestion < data.length - 1
-                    ? `<button class="btn btn-primary px-5 py-1 fw-bold" id="next">Next</button>`
-                    : `<button class="btn btn-success px-5 py-2 fw-bold" id="finish">Finish</button>`;
+    const buttonHtml = currentQuestion < data.length - 1
+        ? `<button class="btn btn-primary px-5 py-1 fw-bold" id="next">Next</button>`
+        : `<button class="btn btn-success px-5 py-2 fw-bold" id="finish">Finish</button>`;
 
-                $('#buttonSection').html(`
-            <div class="col-2 m-4">
-                <div class="">
-                    ${buttonHtml}
-                </div>
+    $('#buttonSection').html(`
+        <div class="col-2 m-4">
+            <div class="">
+                ${buttonHtml}
             </div>
-        `);
+        </div>
+    `);
 
-                // Add click event for hover effect
-                $('input[name=box]').change(function () {
-                    $('label.box').removeClass('active'); // Remove active class from all
-                    $(this).next('label.box').addClass('active'); // Add to selected
-                });
-            }
+    // Event untuk update jawabanTerisi dan progress bar
+    $('input[name=box]').change(function () {
+        if (!$(this).data('answered')) { 
+            $(this).data('answered', true); // Tandai sebagai dijawab
+        
+        }
+
+        $('label.box').removeClass('active');
+        $(this).next('label.box').addClass('active');
+    });
+}
 
             function checkAnswer() {
                 const question = data[currentQuestion];
@@ -500,6 +526,8 @@
                 checkAnswer();
                 currentQuestion++;
                 loadQuestion();
+                jawabanTerisi++;
+                updateProgress(); // Update progress bar
             });
 
             $(document).on('click', '#finish', function () {
@@ -508,7 +536,8 @@
                     return;
                 }
                 checkAnswer();
-
+                jawabanTerisi++;
+                updateProgress(); 
                 $('#buttonSection, #scoreSection').html('');
                 $('#survey').removeClass('d-none');
 
@@ -565,6 +594,11 @@
             $.getJSON('data.json', function (response) {
                 data = response;
             });
+
+
+     
+
+
         });
     </script>
 
