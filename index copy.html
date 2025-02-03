@@ -1,261 +1,789 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAGU Quiz</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://library.sagufoundation.org/images/settings/favicon.png"
+    />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Roboto', sans-serif
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      body {
+        height: 100vh;
+        background-color: rgb(119, 117, 115);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* #intro {
+            height: 200vh;
+           
         }
 
-        p {
-            margin: 0
-        }
-
-        body {
+        #questionSection {
             height: 100vh;
-            background-color: rgb(119, 117, 115);
-      
-        }
+            
+        } */
 
-        .container {
-            margin: 0 auto;
-            background: white;
-            padding: 20px 15px;
-        }
+      .container {
+        background: white;
+        padding: 20px 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
 
-        label.box {
-            display: flex;
-            margin-top: 10px;
-            padding: 10px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            border: 1px solid #ddd
-        }
+      label.box {
+        display: flex;
+        margin-top: 10px;
+        padding: 10px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        border: 1px solid #ddd;
+      }
 
-        #one:checked~label.first,
-        #two:checked~label.second,
-        #three:checked~label.third,
-        #four:checked~label.forth,
-        #five:checked~label.fifth,
-        #six:checked~label.sixth,
-        #seven:checked~label.seveth,
-        #eight:checked~label.eighth {
-            border-color: #8e498e
-        }
+      label.box:hover {
+        background: #d5bbf7;
+      }
 
-        #one:checked~label.first .circle,
-        #two:checked~label.second .circle,
-        #three:checked~label.third .circle,
-        #four:checked~label.forth .circle,
-        #five:checked~label.fifth .circle,
-        #six:checked~label.sixth .circle,
-        #seven:checked~label.seveth .circle,
-        #eight:checked~label.eighth .circle {
-            border: 6px solid #8e498e;
-            background-color: #fff
-        }
+      label.box .course {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
 
-        label.box:hover {
-            background: #d5bbf7
-        }
+      label.box .circle {
+        height: 22px;
+        width: 22px;
+        border-radius: 50%;
+        margin-right: 15px;
+        border: 2px solid #ddd;
+        display: inline-block;
+      }
 
-        label.box .course {
-            display: flex;
-            align-items: center;
-            width: 100%
-        }
+      .pilihan {
+        display: none;
+      }
 
-        label.box .circle {
-            height: 22px;
-            width: 22px;
-            border-radius: 50%;
-            margin-right: 15px;
-            border: 2px solid #ddd;
-            display: inline-block
-        }
+      .btn.btn-primary {
+        border-radius: 25px;
+        margin-top: 20px;
+      }
 
-        input[type="radio"] {
-            display: none
-        }
+      /* Efek jika dipilih */
+      label.box.active {
+        background: #b085c8;
+        border-color: #8e498e;
+        color: #fff;
+      }
 
-        .btn.btn-primary {
-            border-radius: 25px;
-            margin-top: 20px
+      @media (max-width: 450px) {
+        .subject {
+          font-size: 12px;
         }
-
-        @media(max-width: 450px) {
-            .subject {
-                font-size: 12px
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container mx-auto">
-        <div class="row d-flex justify-content-center align-items-center" id="intro1">
-            <div class="col-12 text-center">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnsmtpyq0HThnGHL98w-Q4CaS8vD1gAkEiLw&s"
-                    alt="" class="img-fluid" srcset="">
-                <h3 class="mt-3 fw-bold ">SOL Vocabulary & Grammar Quiz for Public </h3>
+      <div
+        class="row d-flex justify-content-center align-items-center"
+        id="intro1"
+        style="margin-top: 3cm"
+      >
+        <div class="col-12 text-center" id="intro">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnsmtpyq0HThnGHL98w-Q4CaS8vD1gAkEiLw&s"
+            alt=""
+            width="100"
+            class="img-fluid"
+            srcset=""
+          />
+          <p class="mt-2 fw-bold">SOL Vocabulary & Grammar Quiz for Public</p>
+        </div>
+      </div>
+      <div
+        class="row d-flex justify-content-center align-items-center mt-3 mb-5"
+        id="intro2"
+      >
+        <div class="col-10 p-3 bg-dark text-white rounded-3">
+          <p class="text-center fw-bold mb-3">
+            Instructions for Taking the English Grammar and Vocabulary Quiz
+            <br />
+            Welcome to our English Grammar and Vocabulary Quiz!
+          </p>
+
+          <ul>
+            <li>This quiz is completely free—no fees required.</li>
+            <li>
+              There are 50 multiple-choice questions to test your grammar and
+              vocabulary skills.
+            </li>
+            <li>
+              Allocate approximately 20 - 30 minutes to complete all the
+              questions without rushing.
+            </li>
+            <li>Click the "Start Quiz" button below to get started.</li>
+            <li>
+              Read each question carefully and select the best answer from the
+              options provided.
+            </li>
+            <li>
+              Please complete the survey and you’ll receive your score
+              immediately along with feedback on your answers.
+            </li>
+          </ul>
+
+          <p class="text-center fw-bold">Good luck, and enjoy the quiz! 🌟</p>
+        </div>
+
+        <div class="col-12 text-center">
+          <button
+            type="button"
+            class="btn btn-primary px-4 py-2 fw-bold"
+            id="continue"
+          >
+            Continue
+          </button>
+        </div>
+        <!-- </form> -->
+      </div>
+
+      <div
+        class="biodata d-none row d-flex justify-content-center align-items-center"
+        id="biodata"
+      >
+        <div class="col-12 mt-4">
+          <div class="text-center">
+            <h5>
+              Please enter your personal details before proceeding with the quiz
+            </h5>
+          </div>
+        </div>
+        <!-- <form action=""> -->
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-12 col-lg-10">
+            <div class="mb-3">
+              <label for="name" class="form-label"
+                >Name <span class="text-danger">*</span>
+              </label>
+              <input
+                type="text"
+                name="name"
+                class="form-control"
+                id="name"
+                placeholder=""
+                required
+              />
             </div>
-        </div>
-        <div class="row d-flex justify-content-center align-items-center mt-3 mb-5" id="intro2">
-            <div class="col-10 text-center p-3 bg-dark text-white d-flex rounded-3">
-                <p>The following is a simple quiz that will be displayed on the SAGU website to provide an overview of
-                    online English learning experience that focuses on vocabulary and grammar. This simple quiz is also
-                    used as promotional material for SAGU Online Learning</p>
+          </div>
+          <div class="col-md-12 col-lg-10">
+            <div class="mb-3">
+              <label for="hp" class="form-label"
+                >No. Handphone <span class="text-danger"> </span>
+              </label>
+              <input
+                type="tel"
+                class="form-control"
+                name="hp"
+                id="hp"
+                placeholder=""
+                required
+              />
             </div>
-            <div class="col-12 text-center">
-                <button class="btn btn-primary px-4 py-2 fw-bold" id="continue">Continue</button>
+          </div>
+          <div class="col-md-12 col-lg-10">
+            <div class="mb-3">
+              <label for="address" class="form-label"
+                >Address <span class="text-danger"> </span>
+              </label>
+              <textarea
+                class="form-control"
+                id="address"
+                name="address"
+                rows="3"
+                required
+              ></textarea>
             </div>
+          </div>
+
+          <div class="col-md-12 col-lg-10">
+            <div class="mb-3">
+              <label for="address" class="form-label"
+                >Are you willing to be add to the SAGU Foundation WA group?
+                <span class="text-danger"> </span>
+              </label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  name="agree"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckIndeterminate"
+                />
+                <label class="form-check-label" for="flexCheckIndeterminate">
+                  Agree
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 text-center">
+            <button
+              type="button"
+              class="btn btn-primary px-4 py-2 fw-bold"
+              id="continue2"
+            >
+              Start Quiz
+            </button>
+          </div>
         </div>
+      </div>
 
+      <div class="row" id="questionSection"></div>
 
+      <div class="d-flex justify-content-between">
+        <div class="row mt-2" id="buttonSection"></div>
 
-        <div class="row" id="questionSection">
+        <div class="row mt-2" id="scoreSection"></div>
+      </div>
+      <div class="row" id="progresbar"></div>
 
+      <div
+        class="biodata d-none"
+        style="margin-top: 20rem; margin-bottom: 5rem"
+        id="survey"
+      >
+        <div class="col-12 mt-5">
+          <div class="text-center mb-3">
+            <h5 class="fw-bold">Post-Quiz Feedback Survey</h5>
+            <p>
+              Thank you for taking our Grammar and Vocabulary Quiz! Please
+              answer these simple questions to help us improve:
+            </p>
+          </div>
         </div>
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-12 col-lg-10">
+            <div class="mb-3">
+              <label for="name" class="form-label"
+                >1. Did you enjoy the quiz?
+                <span class="text-danger">*</span></label
+              >
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  value="😊 Yes, I liked it!"
+                  type="radio"
+                  name="flexRadioDefault1"
+                  id="flexRadioDefault1_1"
+                />
+                <label class="form-check-label" for="flexRadioDefault1_1">
+                  😊 Yes, I liked it!
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  value="😐 It was okay."
+                  type="radio"
+                  name="flexRadioDefault1"
+                  id="flexRadioDefault1_2"
+                />
+                <label class="form-check-label" for="flexRadioDefault1_2">
+                  😐 It was okay.
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  value="😟 No, I didn’t like it."
+                  type="radio"
+                  name="flexRadioDefault1"
+                  id="flexRadioDefault1_3"
+                />
+                <label class="form-check-label" for="flexRadioDefault1_3">
+                  😟 No, I didn’t like it.
+                </label>
+              </div>
+            </div>
+          </div>
 
-        <div class="row mt-5 justify-content-between" id="buttonSection">
+          <div class="col-md-12 col-lg-10">
+            <div class="mb-3">
+              <label for="name" class="form-label"
+                >2. Were the questions easy to understand?
+                <span class="text-danger">*</span></label
+              >
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="✅ Yes"
+                  name="flexRadioDefault2"
+                  id="flexRadioDefault2_1"
+                />
+                <label class="form-check-label" for="flexRadioDefault2_1">
+                  ✅ Yes
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="🤔 Some were confusing"
+                  name="flexRadioDefault2"
+                  id="flexRadioDefault2_2"
+                />
+                <label class="form-check-label" for="flexRadioDefault2_2">
+                  🤔 Some were confusing
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault2"
+                  id="flexRadioDefault2_3"
+                  value="❌ No"
+                />
+                <label class="form-check-label" for="flexRadioDefault2_3">
+                  ❌ No
+                </label>
+              </div>
+            </div>
+          </div>
 
+          <div class="col-md-12 col-lg-10">
+            <div class="mb-3">
+              <label for="name" class="form-label"
+                >3. Was the quiz too hard, too easy, or just right for you?
+                <span class="text-danger">*</span></label
+              >
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  value="🟢 Too easy"
+                  type="radio"
+                  name="flexRadioDefault3"
+                  id="flexRadioDefault3_1"
+                />
+                <label class="form-check-label" for="flexRadioDefault3_1">
+                  🟢 Too easy
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault3"
+                  id="flexRadioDefault3_2"
+                  value="🟡 Just right"
+                />
+                <label class="form-check-label" for="flexRadioDefault3_2">
+                  🟡 Just right
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault3"
+                  id="flexRadioDefault3_3"
+                  value="🔴 Too hard"
+                />
+                <label class="form-check-label" for="flexRadioDefault3_3">
+                  🔴 Too hard
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 col-lg-10">
+            <div class="mb-3">
+              <label for="name" class="form-label"
+                >4. Did the quiz help you learn new grammar and vocabulary?
+                <span class="text-danger">*</span></label
+              >
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  value="👍 Yes, it helped me!"
+                  type="radio"
+                  name="flexRadioDefault4"
+                  id="flexRadioDefault4_1"
+                />
+                <label class="form-check-label" for="flexRadioDefault4_1">
+                  👍 Yes, it helped me!
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  value="🤷 Maybe a little."
+                  type="radio"
+                  name="flexRadioDefault4"
+                  id="flexRadioDefault4_2"
+                />
+                <label class="form-check-label" for="flexRadioDefault4_2">
+                  🤷 Maybe a little.
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  value="👎 No, it didn’t."
+                  type="radio"
+                  name="flexRadioDefault4"
+                  id="flexRadioDefault4_3"
+                />
+                <label class="form-check-label" for="flexRadioDefault4_3">
+                  👎 No, it didn’t.
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 col-lg-10">
+            <div class="mb-3">
+              <label for="5" class="form-label"
+                >5. What did you like about the quiz?
+                <span class="text-danger">*</span></label
+              >
+              <textarea
+                class="form-control"
+                name="survey5"
+                id="survey5"
+                rows="3"
+                required
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="col-md-12 col-lg-10">
+            <div class="mb-3">
+              <label for="5" class="form-label"
+                >6. How can we make the quiz better for you?
+                <span class="text-danger">*</span></label
+              >
+              <textarea
+                class="form-control"
+                id="survey6"
+                name="survey6"
+                rows="3"
+                required
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="col-12 text-center">
+            <button
+              type="button"
+              class="btn btn-primary px-4 py-2 fw-bold"
+              id="continue4"
+            >
+              Submit & Check Result
+            </button>
+          </div>
         </div>
-
-        <div class="row mt-5 justify-content-between" id="scoreSection">
-
-        </div>
-
+      </div>
     </div>
 
-
-
-    <footer class="bg-dark  text-white text-center fixed-bottom">
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-          &copy; 2025 Copyright:
-          <a class="text-white fw-bold text-decoration-none" href="#">SAGU Foundation</a>
+    <footer class="bg-dark text-white text-center fixed-bottom">
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        &copy; 2025 Copyright:
+        <a class="text-white fw-bold text-decoration-none" href="#"
+          >SAGU Foundation</a
+        >
+      </div>
+    </footer>
+    <div class="modal" id="myModal2">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Warning</h4>
+          </div>
+          <div class="modal-body text-center">
+            All fields must be filled out correctly !
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
         </div>
-      </footer>
+      </div>
+    </div>
 
-
-
+    <div class="modal" id="myModal3">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Warning</h4>
+          </div>
+          <div class="modal-body text-center">Options cannot be empty</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-       
-       $(document).ready(function() {
-    let data;
-    let currentQuestion = 0;
-    let score = 0;
+      $(document).ready(function () {
+        let data;
+        let currentQuestion = 0;
+        let score = 0;
+        let jawabanTerisi = 0; // Tambahkan variabel jawabanTerisi
 
-    // Function to load the question
-    function loadQuestion() {
-        const question = data[currentQuestion];
-        $('#questionSection').html(`
-            <div class="col-12">
-                <p class="fw-bold mt-5">${question.question}</p>
+        function updateProgress() {
+          let percentage = (jawabanTerisi / data.length) * 100; // Sesuaikan total soal
+          document.getElementById("progressBar").style.width = percentage + "%";
+          document
+            .getElementById("progressBar")
+            .setAttribute("aria-valuenow", percentage);
+          document.getElementById("progressBar").innerText =
+            Math.round(percentage) + "%"; // Menampilkan angka persentase
+        }
+
+        function loadQuestion() {
+          const question = data[currentQuestion];
+          $("#questionSection").html(`
+        <div class="col-12">
+            <p class="fw-bold mt-5">${question.question}</p>
+        </div>
+    `);
+
+          $("#questionSection").append('<div class="row"></div>');
+          question.options.forEach((option, index) => {
+            $("#questionSection .row").append(`
+            <div class="col-md-6">
+                <input type="radio" name="box" class="pilihan" id="option${index}" value="${option}">
+                <label for="option${index}" class="box w-100">
+                    <div class="course">
+                        <span class=""></span>
+                        <span class="subject">${option}</span>
+                    </div>
+                </label>
             </div>
         `);
+          });
 
-        // Clear old options and load new ones
-        question.options.forEach((option, index) => {
-            $('#questionSection').append(`
-                <div class="col-md-6">
-                    <input type="radio" name="box" id="option${index}">
-                    <label for="option${index}" class="box w-100">
-                        <div class="course">
-                            <span class="circle"></span>
-                            <span class="subject">${option}</span>
-                        </div>
-                    </label>
+          $("#scoreSection").html(`
+        <div class="col-10 m-4">
+            <div class="p-4 bg-dark text-white rounded">
+                Skor: <span>${score}</span>/50
+            </div>
+        </div>
+    `);
+
+          $("#progresbar").html(`
+        <div class="col-10 m-4 mx-auto text-center">
+            <div class="progress">
+                <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    0%
                 </div>
-            `);
+            </div>
+        </div>
+    `);
+
+          const buttonHtml =
+            currentQuestion < data.length - 1
+              ? `<button class="btn btn-primary px-5 py-1 fw-bold" id="next">Next</button>`
+              : `<button class="btn btn-success px-5 py-2 fw-bold" id="finish">Finish</button>`;
+
+          $("#buttonSection").html(`
+        <div class="col-2 m-4">
+            <div class="">
+                ${buttonHtml}
+            </div>
+        </div>
+    `);
+
+          // Event untuk update jawabanTerisi dan progress bar
+          $("input[name=box]").change(function () {
+            if (!$(this).data("answered")) {
+              $(this).data("answered", true); // Tandai sebagai dijawab
+            }
+
+            $("label.box").removeClass("active");
+            $(this).next("label.box").addClass("active");
+          });
+        }
+
+        function checkAnswer() {
+          const question = data[currentQuestion];
+          const selectedOption = $("input[name=box]:checked").val();
+          if (selectedOption === question.answer) {
+            score += 1; // Increment score for correct answer
+          }
+        }
+
+        $("#continue").click(function () {
+          $("#intro1, #intro2").addClass("d-none");
+          $("#biodata").removeClass("d-none");
+          // loadQuestion();
+        });
+        $("#continue2").click(function () {
+          const nameInput = $("#name").val();
+          if (nameInput === null || nameInput === "") {
+            var myModal = new bootstrap.Modal(
+              document.getElementById("myModal2")
+            );
+            myModal.show();
+            return;
+          } else {
+            $("#biodata").addClass("d-none");
+            loadQuestion();
+          }
         });
 
-        // Update score and next button section
-        $('#scoreSection').html(`
-            <div class="col-2 m-3">
-                <div class="d-flex justify-content-center p-4 bg-dark text-white rounded">
-                    Skor: <span>${score}</span>/50
-                </div>
-            </div>
-        `);
+        $(document).on("click", "#next", function () {
+          if (!$("input[name=box]:checked").val()) {
+            $("#myModal3").modal("show");
+            return;
+          }
+          checkAnswer();
+          currentQuestion++;
+          loadQuestion();
+          jawabanTerisi++;
+          updateProgress(); // Update progress bar
+        });
 
-        if (currentQuestion < data.length - 1) {
-            $('#buttonSection').html(`
-                <div class="col-4 m-3">
-                    <div class="d-flex justify-content-center">
-                        <button class="btn btn-primary px-5 py-2 fw-bold" id="next">Next</button>
+        $(document).on("click", "#finish", function () {
+          if (!$("input[name=box]:checked").val()) {
+            $("#myModal3").modal("show");
+            $("#myModal3").modal("show");
+            return;
+          }
+          checkAnswer();
+          jawabanTerisi++;
+          updateProgress();
+          $("#buttonSection, #scoreSection").html("");
+          $("#survey").removeClass("d-none");
+          $("#progresbar").addClass("d-none");
+        });
+
+        $(document).on("click", "#continue4", function () {
+          // Biodata
+          var name = $("#name").val();
+          var hp = $("#hp").val();
+          var address = $("#address").val();
+          var agree = $("#flexCheckIndeterminate").is(":checked");
+
+          // Survey (radio buttons) berdasarkan ID, dengan nilai default jika tidak ada pilihan
+          var flexRadioDefault1 =
+            $("input[name='flexRadioDefault1']:checked").val() ||
+            "Tidak ada pilihan"; // Pertanyaan 1
+          var flexRadioDefault2 =
+            $("input[name='flexRadioDefault2']:checked").val() ||
+            "Tidak ada pilihan"; // Pertanyaan 2
+          var flexRadioDefault3 =
+            $("input[name='flexRadioDefault3']:checked").val() ||
+            "Tidak ada pilihan"; // Pertanyaan 3
+          var flexRadioDefault4 =
+            $("input[name='flexRadioDefault4']:checked").val() ||
+            "Tidak ada pilihan"; // Pertanyaan 4
+
+          // Survey text input
+          var survey5 = $("#survey5").val() || "Tidak ada input"; // Pertanyaan 5
+          var survey6 = $("#survey6").val() || "Tidak ada input"; // Pertanyaan 6
+
+          // Cek jika ada input yang kosong atau null
+          if (
+            !flexRadioDefault1 === "Tidak ada pilihan" ||
+            flexRadioDefault2 === "Tidak ada pilihan" ||
+            flexRadioDefault3 === "Tidak ada pilihan" ||
+            flexRadioDefault4 === "Tidak ada pilihan" ||
+            survey5 === "Tidak ada input" ||
+            survey6 === "Tidak ada input"
+          ) {
+            var myModal = new bootstrap.Modal(
+              document.getElementById("myModal2")
+            );
+            myModal.show();
+            return; // Tidak melanjutkan proses jika ada field yang kosong atau tidak valid
+          } else {
+            $("#survey").addClass("d-none");
+            if (score <= 20) {
+              $("#questionSection").html(`
+                    <div class="col-12 text-center">
+                        <p class="fw-bold">Quiz completed. Your score is ${score}/50</p>
+                        <p> <span class="fw-bold"> Beginner </span> (A1) - Basic understanding of very simple grammar and vocabulary </p>
                     </div>
-                </div>
-            `);
-        } else {
-            $('#buttonSection').html(`
-                <div class="col-4 m-3">
-                    <div class="d-flex justify-content-center">
-                        <button class="btn btn-success px-5 py-2 fw-bold" id="finish">Finish</button>
+                    `);
+            }
+
+            if (score >= 21 && score <= 30) {
+              $("#questionSection").html(`
+                    <div class="col-12 text-center">
+                        <p class="fw-bold">Quiz completed. Your score is ${score}/50</p>
+                        <p> <span class="fw-bold"> Elementary  </span> (A2) - Familiar with simple structures and everyday vocabulary
+                        </p>
                     </div>
-                </div>
-            `);
-        }
-    }
+                    `);
+            }
 
-    // Check selected answer
-    function checkAnswer() {
-        const question = data[currentQuestion];
-        const selectedOption = $('input[name=box]:checked')
-            .next()
-            .find('.subject')
-            .text();
-        if (selectedOption === question.answer) {
-            score += 1; // Update score if correct
-        }
-    }
+            if (score >= 31 && score <= 40) {
+              $("#questionSection").html(`
+                    <div class="col-12 text-center">
+                        <p class="fw-bold">Quiz completed. Your score is ${score}/50</p>
+                        <p> <span class="fw-bold"> Intermediate   </span> (B1) -  Good grasp of basic grammar and vocabulary with some range
+                        </p>
+                    </div>
+                    `);
+            }
 
-    // Start Quiz
-    $('#continue').click(function() {
-        $('#intro1, #intro2').addClass('d-none');
-        loadQuestion();
-    });
+            if (score >= 41 && score <= 50) {
+              $("#questionSection").html(`
+                    <div class="col-12 text-center">
+                        <p class="fw-bold">Quiz completed. Your score is ${score}/50</p>
+                        <p> <span class="fw-bold"> Intermediate   </span> (C1) -  Soiled use of more complex grammar and varied vocabulary.
+                        </p>
+                    </div>
+                    `);
+            }
 
-    // Handle next button click
-    $(document).on('click', '#next', function() {
-        checkAnswer();
-        currentQuestion++;
-        loadQuestion();
-    });
+            $("#buttonSection").html("");
+            $("#scoreSection").html("");
+          }
+        });
 
-    // Handle finish button click
-    $(document).on('click', '#finish', function() {
-        checkAnswer();
-        $('#questionSection').html(`
-            <div class="col-12">
-                <p class="fw-bold mt-5">Quiz completed. Your score is ${score}/50</p>
-            </div>
-        `);
-        $('#buttonSection').html('');
-        $('#scoreSection').html('');
-    });
-
-    // Fetch JSON data
-    $.getJSON('data.json', function(response) {
-        data = response; // Assign to global variable
-    });
-});
-
+        $.getJSON("data.json", function (response) {
+          data = response;
+        });
+      });
     </script>
-</body>
-
+  </body>
 </html>
-
-
-<!-- panggil data dari file data.json dan terapkan di html ini. terapkan juga perhitungan skornya kalau benar jawaban dan buat satu pertayaan satu halaman. Klik next baru ke pertayaan berikut -->
