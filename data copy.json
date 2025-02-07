@@ -30,6 +30,11 @@
     "answer": "B) goes"
   },
   {
+    "question": "7. Which is not an animal",
+    "options": ["A) antelope", "B) sunflower"],
+    "answer": "B) sunflower"
+  },
+  {
     "question": "8. Choose the correct form: \"They ___ my friends.\"",
     "options": ["A) are", "B) is"],
     "answer": "A) are"
